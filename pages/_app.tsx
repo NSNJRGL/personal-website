@@ -8,7 +8,7 @@ import { Footer } from "src/components/Footer";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="dark">
       <div className="relative bg-gradient-to-tr dark:from-gray-900 dark:to-black dark:text-neutral-100 bg-white">
         <NavBarMobile />
         <div className="md:container md:mx-auto pt-10 px-5 max-w-4xl">

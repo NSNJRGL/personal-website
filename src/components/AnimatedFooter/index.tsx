@@ -40,7 +40,7 @@ export function AnimatedFooter() {
             variants={squareVariants}
             animate={controls}
             initial="hidden"
-            className="h-[4rem] w-[8rem] sm:h-[6rem] sm:w-48 square"
+            className="h-[4rem] w-[8rem] sm:h-[6rem] sm:w-48 square relative"
           >
             <Image
               src={
@@ -61,7 +61,7 @@ export function AnimatedFooter() {
             variants={squareVariants}
             animate={controls}
             initial="hidden"
-            className="h-[4rem] w-[8rem] sm:h-[6rem] sm:w-48 square"
+            className="h-[4rem] w-[8rem] sm:h-[6rem] sm:w-48 square relative"
           >
             <Image
               src={
