@@ -23,7 +23,7 @@ import { ListItem } from "src/components/ListItem";
 
 export function Technology() {
   return (
-    <div className="grid grid-cols-3 gap-4 sm:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
       <ListItem icon={SiReact} text="React.js" />
       <ListItem icon={SiRedux} text="Redux" />
       <ListItem icon={SiNextDotJs} text="Next.js" />
