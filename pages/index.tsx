@@ -26,39 +26,38 @@ const Home: NextPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: [0.6, 0.01, -0.05, 0.95] }}
         >
-          Early on in my career I decided I wanted to be an expert in
-          JavaScript. So I set my mind on mastering the world's most popular
-          programming language. I spent countless hours writing JavaScript for
-          the companies I worked for as well as in the evenings for open source
-          and other side projects. Eventually I even represented PayPal on the
-          TC-39 (the committee responsible for standardizing the JavaScript
-          language). I feel like I achieved my goal of becoming an expert in
-          JavaScript, but I do need to keep up just like everyone else, which is
-          an enjoyable challenge.
+          First of all, let me share my story of how I fell in love with the
+          computer the very first time. When I was in ninth grade, my parents
+          bought me a computer and internet. At the time, It feels like magic
+          when I first entered to google.com website. After that, I have been
+          trying to find how things are working, like this way. Like a child, I
+          became curious about everything. This characteristic is not changed at
+          all. Even though I got into a job, I have been trying to find another
+          solution to implement any problem. My coworkers used to say to me, how
+          did you find out these kinds of interesting things. I think one of the
+          valuable things that I give to my team or organization is curiosity. I
+          think this attitude has been relevant to me since I was a child.
         </motion.p>
       </AnimatedDiv>
       <AnimatedDiv>
         <h1 className="text-2xl font-bold sm:text-3xl">What do I do? 💭</h1>
         <p className="opacity-80">
-          I've also always been excited about sharing what I know with others.
-          When I was in school, I signed up to be a tutor for my classmates and
-          once I even got Firebase to sponsor pizza for me to give an informal
-          workshop about Angular.js to my fellow students. I was a speaker at
-          the first meetup I ever attended, and I've now delivered over a
-          hundred talks on topics including JavaScript, React, Testing, Careers,
-          and more. One of my talks got noticed by egghead and I was invited to
-          turn that talk into an egghead course. The rest is history!
+          Early on in my career I decided I wanted to be an expert in
+          JavaScript. So I set my mind on mastering the world's most popular
+          programming language. I spent countless hours writing JavaScript for
+          the companies I worked for as well as in the evenings for other side
+          projects. I feel like I achieved my goal of becoming an expert in
+          JavaScript, but I do need to keep up just like everyone else, which is
+          an enjoyable challenge.
         </p>
       </AnimatedDiv>
 
       <AnimatedDiv>
         <h1 className="text-2xl font-bold sm:text-3xl">Technologies 💻</h1>
         <p className="opacity-80">
-          One of the biggest things that has helped me learn is by committing
-          myself to sharing what I know with others. Between podcasts, blog
-          posts, talks, and workshops, I force myself into situations where I
-          have to be accountable to those I'm teaching to really know my stuff.
-          And as a result, a lot of people have learned from me as well.
+          I use a wide range of tools to tackle each hurdle in the most
+          efficient manner possible. Try asking yourself with this question.
+          Without tools, would humankind be as prosperous as it is today?
         </p>
 
         <Technology />

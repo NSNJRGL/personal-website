@@ -1,9 +1,22 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import AnimatedDiv from "src/components/AnimatedDiv";
+import Card from "src/components/Card";
+import { TrackProps } from "src/components/Card";
+import { motion } from "framer-motion";
+import { useCursorAnimation } from "src/hooks/useCursorAnimation";
 
-const About: NextPage = () => {
+interface Props {
+  tracks: {
+    tracks: TrackProps[];
+  };
+}
+
+const About: NextPage<Props> = (props) => {
+  const { tracks } = props;
+  const [ref, controls, square] = useCursorAnimation();
+
   return (
     <>
       <Head>
@@ -50,14 +63,37 @@ const About: NextPage = () => {
       <AnimatedDiv>
         <h2 className="text-3xl font-bold">Music</h2>
         <p>
-          I listen to a lot of Youtube and have always had a passion for music
+          I listen to a lot of Spotify and have always had a passion for music
           ever since. Over the last 12 months, I've played the song hundred
           times! Below you can find an up-to-date collection of my favourite
           songs from the past ~4 weeks.
         </p>
       </AnimatedDiv>
+
+      <motion.div
+        ref={ref}
+        variants={square}
+        animate={controls}
+        initial="hidden"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6"
+      >
+        {tracks.tracks.map((track: TrackProps, index: number) => (
+          <Card key={index} track={track} />
+        ))}
+      </motion.div>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch(`${process.env.WEB_URL}/api/top-tracks`);
+  const tracks = await res.json();
+
+  return {
+    props: {
+      tracks,
+    },
+  };
 };
 
 export default About;

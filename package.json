@@ -15,6 +15,8 @@
     "hamburger-react": "^2.4.1",
     "next": "12.1.0",
     "next-themes": "^0.1.1",
+    "nprogress": "^0.2.0",
+    "querystring": "^0.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
@@ -22,6 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "17.0.21",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "17.0.40",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",

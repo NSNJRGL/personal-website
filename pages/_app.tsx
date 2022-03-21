@@ -1,10 +1,17 @@
 import "@styles/globals.css";
 import type { AppProps } from "next/app";
+import { Router } from "next/router";
 import { ThemeProvider } from "next-themes";
 import NavBar from "src/components/Navbar";
 import NavBarMobile from "src/components/Navbar/NavbarMobile";
 import { AnimatedFooter } from "src/components/AnimatedFooter";
 import { Footer } from "src/components/Footer";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
