@@ -17,6 +17,7 @@ const Card = ({ track }: { track: TrackProps }) => {
       <a
         href={track.songUrl}
         target="_blank"
+        rel="noreferrer"
         data-mdb-ripple="true"
         data-mdb-ripple-color="light"
       >

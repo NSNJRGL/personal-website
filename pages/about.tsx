@@ -64,7 +64,7 @@ const About: NextPage<Props> = (props) => {
         <h2 className="text-3xl font-bold">Music</h2>
         <p>
           I listen to a lot of Spotify and have always had a passion for music
-          ever since. Over the last 12 months, I've played the song hundred
+          ever since. Over the last 12 months, I have played the song hundred
           times! Below you can find an up-to-date collection of my favourite
           songs from the past ~4 weeks.
         </p>
