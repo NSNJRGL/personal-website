@@ -6,11 +6,10 @@ import Card from "src/components/Card";
 import { TrackProps } from "src/components/Card";
 import { motion } from "framer-motion";
 import { useCursorAnimation } from "src/hooks/useCursorAnimation";
+import { getTopTracks } from "src/lib/spotify";
 
 interface Props {
-  tracks: {
-    tracks: TrackProps[];
-  };
+  tracks: TrackProps[];
 }
 
 const About: NextPage<Props> = (props) => {
@@ -77,7 +76,7 @@ const About: NextPage<Props> = (props) => {
         initial="hidden"
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6"
       >
-        {tracks.tracks.map((track: TrackProps, index: number) => (
+        {tracks.map((track: TrackProps, index: number) => (
           <Card key={index} track={track} />
         ))}
       </motion.div>
@@ -86,8 +85,15 @@ const About: NextPage<Props> = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`${process.env.WEB_URL}/api/top-tracks`);
-  const tracks = await res.json();
+  const response = await getTopTracks();
+  const { items } = await response.json();
+
+  const tracks = items.slice(0, 12).map((track: any) => ({
+    artist: track.artists.map((_artist: any) => _artist.name).join(", "),
+    songUrl: track.external_urls.spotify,
+    title: track.name,
+    image: track.album.images[1],
+  }));
 
   return {
     props: {
