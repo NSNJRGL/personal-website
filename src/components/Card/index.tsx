@@ -26,8 +26,8 @@ const Card = ({ track }: { track: TrackProps }) => {
             src={track.image.url}
             className="rounded-md brightness-75 group-hover:brightness-100 transition-all duration-300 group-hover:scale-110"
             alt={`Album cover art for ${track.title} by ${track.artist}`}
-            width={track.image.width}
-            height={track.image.height}
+            width={parseInt(track.image.width)}
+            height={parseInt(track.image.height)}
           />
         </div>
         <div className="pt-4 ">
