@@ -49,23 +49,14 @@ const About: NextPage<Props> = (props) => {
 
       <AnimatedDiv>
         <p>
-          Strong knowledge and Hands-on experience in Modern Web Development and
-          Mobile practices. Passionate about learning new technologies and
-          skills. ​​Talented Front-End Developer with 3 years of professional
-          experience maximizing application performance and resolving technical
-          errors. Skilled at building products and solving problems with
-          semantically and syntactically clean and readable code using the
-          latest frameworks, web services, and design patterns.
+            Proficient in modern web development and mobile practices, with a strong dedication to learning new technologies and enhancing skills. A talented front-end developer with three years of professional experience, adapt at optimizing application performance and troubleshooting technical issues. Skilled in crafting products and addressing challenges through clean, readable code employing contemporary frameworks, web services, and design patterns
         </p>
       </AnimatedDiv>
 
       <AnimatedDiv>
         <h2 className="text-3xl font-bold">Music</h2>
         <p>
-          I listen to a lot of Spotify and have always had a passion for music
-          ever since. Over the last 12 months, I have played the song hundred
-          times! Below you can find an up-to-date collection of my favourite
-          songs from the past ~4 weeks.
+            As an avid Spotify listener, my love for music has been ingrained since early on. In the past year alone, I've played my favorite song hundreds of times! Below, you'll discover a current compilation of my top picks from the last month or so.
         </p>
       </AnimatedDiv>
 

@@ -9,6 +9,7 @@ import { Footer } from "src/components/Footer";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import Script from "next/script";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -46,6 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   <AnimatedFooter />
               </div>
           </ThemeProvider>
+          <SpeedInsights />
       </>
   );
 }
