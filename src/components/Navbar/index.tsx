@@ -23,7 +23,7 @@ const NavBar = () => {
       {loaded && (
         <AnimatedDiv
           direction="top-to-bottom"
-          className="hidden sm:flex flex-row content-center mx-auto justify-between max-w-3xl"
+          className="hidden sm:flex flex-row content-center mx-auto justify-between max-w-3xl pt-10"
         >
           <nav className="flex-1">
             <ul className="flex space-x-4">

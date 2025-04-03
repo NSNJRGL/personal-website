@@ -33,9 +33,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ThemeProvider attribute="class" defaultTheme="dark">
               <div className="relative bg-gradient-to-tr dark:from-gray-900 dark:to-black dark:text-neutral-100 bg-white">
                   <NavBarMobile />
-                  <div className="md:container md:mx-auto pt-10 px-5 max-w-4xl">
+                  <div className="md:container md:mx-auto pt-0 px-5 max-w-4xl">
                       <NavBar />
-                      <main className="mx-auto space-y-12 max-w-3xl sm:pt-12">
+                      <main className="mx-auto space-y-12 max-w-3xl sm:pt-11">
                           <Component {...pageProps} />
                       </main>
 

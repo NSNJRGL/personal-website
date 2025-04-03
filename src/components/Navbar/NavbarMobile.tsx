@@ -41,21 +41,6 @@ const NavBarMobile = () => {
 
   return (
     <>
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-10 py-24 px-8 space-y-2 bg-white dark:bg-gray-900 sm:hidden"
-          >
-            <h1 className="text-4xl font-bold">Menu.</h1>
-
-            <ul className="grid grid-cols-1 gap-2">{navLinks}</ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <motion.div
         className="overflow-hidden sticky top-0 z-20 h-32 transition-all sm:hidden"
         initial={{ opacity: 0, y: -50 }}
@@ -85,17 +70,12 @@ const NavBarMobile = () => {
               mobileMenuOpen ? "bg-gray-100 dark:bg-gray-800" : "bg-transparent"
             }`}
           >
-            <button
-              type="button"
-              className="block relative z-50 px-2 text-gray-500 focus:ring transition-all"
-              onClick={toggleMenu}
-            >
-              <Hamburger
-                toggled={mobileMenuOpen}
-                size={20}
-                color="currentColor"
-              />
-            </button>
+            <nav className="flex-1">
+              <ul className="flex space-x-4">
+                <NavLink href="/" title="/home" />
+                <NavLink href="/about" title="/about" />
+              </ul>
+            </nav>
 
             <div className="overflow-hidden py-2 px-4 flex items-center">
               <ToggleButton />
