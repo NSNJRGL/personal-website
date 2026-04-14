@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   AiFillGithub,
   AiFillLinkedin,
@@ -8,32 +7,47 @@ import {
 import AnimatedDiv from "../AnimatedDiv";
 
 export function Footer() {
+  const links = [
+    {
+      href: "https://github.com/NSNJRGL",
+      icon: AiFillGithub,
+      label: "GitHub",
+      openInNewTab: true,
+    },
+    {
+      href: "https://www.linkedin.com/in/nasanjargal-b/",
+      icon: AiFillLinkedin,
+      label: "LinkedIn",
+      openInNewTab: true,
+    },
+    {
+      href: "https://www.instagram.com/nasanjargal_b/",
+      icon: AiFillInstagram,
+      label: "Instagram",
+      openInNewTab: true,
+    },
+    {
+      href: "mailto:nbinderiyaa@gmail.com",
+      icon: AiTwotoneMail,
+      label: "Email",
+      openInNewTab: false,
+    },
+  ];
+
   return (
     <AnimatedDiv>
       <div className="flex justify-center space-x-4 pt-8">
-        <Link legacyBehavior href="https://github.com/NSNJRGL">
-          <a target="_blank" rel="noreferrer">
-            <AiFillGithub className="h-6 w-6" />
+        {links.map(({ href, icon: Icon, label, openInNewTab }) => (
+          <a
+            key={href}
+            href={href}
+            aria-label={label}
+            target={openInNewTab ? "_blank" : undefined}
+            rel={openInNewTab ? "noopener noreferrer" : undefined}
+          >
+            <Icon className="h-6 w-6" />
           </a>
-        </Link>
-
-        <Link legacyBehavior href="https://www.linkedin.com/in/nasanjargal-b/">
-          <a target="_blank" rel="noreferrer">
-            <AiFillLinkedin className="h-6 w-6" />
-          </a>
-        </Link>
-
-        <Link legacyBehavior href="https://www.instagram.com/nasanjargal_b/">
-          <a target="_blank" rel="noreferrer">
-            <AiFillInstagram className="h-6 w-6" />
-          </a>
-        </Link>
-
-        <Link legacyBehavior href="mailto:nbinderiyaa@gmail.com">
-          <a target="_blank" rel="noreferrer">
-            <AiTwotoneMail className="h-6 w-6" />
-          </a>
-        </Link>
+        ))}
       </div>
 
       <div className="pt-4">

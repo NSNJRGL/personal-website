@@ -1,43 +1,23 @@
 import { useEffect, useState } from "react";
-import { Pivot as Hamburger } from "hamburger-react";
 import { NavLink } from "./";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import ToggleButton from "../ToggleButton";
 
 const NavBarMobile = () => {
-  const [mobileMenuOpen, setMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen((old) => !old);
-  };
-
   useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-
     const listener = () => {
       setHasScrolled(window.scrollY > 20);
     };
 
-    document.addEventListener("scroll", listener);
+    listener();
+    window.addEventListener("scroll", listener, { passive: true });
 
     return () => {
-      document.removeEventListener("scroll", listener);
+      window.removeEventListener("scroll", listener);
     };
   }, []);
-
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
-  const navLinks = (
-    <>
-      <NavLink href="/" title="/home" closeMenu={closeMenu} />
-      <NavLink href="/about" title="/about" closeMenu={closeMenu} />
-    </>
-  );
 
   return (
     <>
@@ -53,24 +33,18 @@ const NavBarMobile = () => {
           opacity: 0,
           y: 0,
           transition: {
-            ease: "fadeInOpacity",
+            ease: "easeInOut",
             duration: 1.6,
           },
         }}
       >
         <div
-          className={`${
-            hasScrolled || mobileMenuOpen ? "mt-0" : "mt-10 mx-5"
-          } bg-gray-100 dark:bg-gray-900 relative transition-all ${
-            hasScrolled || mobileMenuOpen ? "rounded-none" : "rounded-lg"
+          className={`${hasScrolled ? "mt-0" : "mt-10 mx-5"} relative bg-gray-100 transition-all dark:bg-gray-900 ${
+            hasScrolled ? "rounded-none" : "rounded-lg"
           }`}
         >
-          <div
-            className={`flex justify-between items-center transition-colors space-x-2 ${
-              mobileMenuOpen ? "bg-gray-100 dark:bg-gray-800" : "bg-transparent"
-            }`}
-          >
-            <nav className="flex-1">
+          <div className="flex items-center justify-between space-x-2 bg-transparent transition-colors">
+            <nav className="flex-1" aria-label="Mobile">
               <ul className="flex space-x-4">
                 <NavLink href="/" title="/home" />
                 <NavLink href="/about" title="/about" />

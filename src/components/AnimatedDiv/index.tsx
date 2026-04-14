@@ -14,7 +14,7 @@ const AnimatedDiv = ({
 }: Props) => {
   return (
     <motion.div
-      className={`${className}`}
+      className={className}
       initial={{ opacity: 0, y: direction === "bottom-to-top" ? 50 : -50 }}
       animate={{
         opacity: 1,
@@ -25,7 +25,7 @@ const AnimatedDiv = ({
         opacity: 0,
         y: 0,
         transition: {
-          ease: "fadeInOpacity",
+          ease: "easeInOut",
           duration: 1.6,
         },
       }}
