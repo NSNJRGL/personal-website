@@ -7,6 +7,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: inherit;
+  overflow-x: hidden;
+  background: #000;
 }
 
 a {
@@ -26,5 +28,27 @@ p {
 @layer components {
   .link {
     @apply inline-block py-3 px-5 font-normal text-sm underline rounded-full bg-white/0 hover:bg-gray-900/5 dark:hover:bg-white/10;
+  }
+
+  .scrollbar-chrome {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.35) transparent;
+  }
+
+  .scrollbar-chrome::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .scrollbar-chrome::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-chrome::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.28);
+    border-radius: 9999px;
+  }
+
+  .scrollbar-chrome::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.42);
   }
 }

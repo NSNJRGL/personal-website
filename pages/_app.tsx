@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider attribute="class" defaultTheme="dark">
         {isV1Route ? (
           <div
-            className={`${openSans.className} relative bg-white bg-gradient-to-tr dark:from-gray-900 dark:to-black dark:text-neutral-100`}
+            className={`${openSans.className} relative min-h-screen bg-white bg-gradient-to-tr dark:from-gray-900 dark:to-black dark:text-neutral-100`}
           >
             <NavBarMobile />
             <div className="max-w-4xl px-5 pt-0 md:container md:mx-auto">
@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <AnimatedFooter />
           </div>
         ) : (
-          <div className={openSans.className}>
+          <div className={`${openSans.className} min-h-screen bg-black`}>
             <Component {...pageProps} />
           </div>
         )}

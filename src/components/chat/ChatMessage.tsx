@@ -1,4 +1,3 @@
-import ChatSources from "./ChatSources";
 import type { ChatMessage as ChatMessageType } from "./types";
 
 type Props = {
@@ -7,6 +6,8 @@ type Props = {
 
 const ChatMessage = ({ message }: Props) => {
   const isAssistant = message.role === "assistant";
+  const timestamp = message.createdAt || new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  const paragraphs = message.content ? message.content.split("\n") : [];
 
   const renderInline = (text: string) => {
     const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g).filter(Boolean);
@@ -32,27 +33,60 @@ const ChatMessage = ({ message }: Props) => {
   };
 
   return (
-    <article className={`flex ${isAssistant ? "justify-start" : "justify-end"}`}>
+    <article className={`min-w-0 overflow-x-hidden flex ${isAssistant ? "justify-start" : "justify-end"}`}>
+      {!isAssistant ? (
+        <div className="max-w-[92%] sm:max-w-[82%]">
+          <div className="mb-1 flex items-center justify-end gap-1.5 pr-1 text-[11px] font-medium text-gray-400">
+            <svg className="h-3.5 w-3.5 shrink-0 opacity-90" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.8" />
+              <path d="M12 7.5V12L15 13.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <span className="leading-none">{timestamp}</span>
+          </div>
+          <div className="relative overflow-hidden rounded-[1.7rem] bg-[#1b1b1d] px-6 py-3 text-white shadow-sm">
+            <span
+              aria-hidden="true"
+              className="absolute right-0 top-2 h-4 w-4 translate-x-[35%] rounded-tr-[0.85rem] bg-[#1b1b1d]"
+              style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%)" }}
+            />
+            <div className="space-y-2">
+              {paragraphs.map((paragraph) => (
+                <p key={`${message.id}-${paragraph}`} className="whitespace-pre-wrap break-words text-[14px] leading-5.5 sm:text-[15px]">
+                  {renderInline(paragraph)}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
       <div
         className={[
-          "max-w-[90%] px-4 py-3 sm:max-w-[80%]",
+          "min-w-0 max-w-[90%] px-4 py-3 sm:max-w-[80%]",
           isAssistant
             ? "text-gray-200"
             : "rounded-3xl bg-[#1b1b1d] text-white shadow-sm",
         ].join(" ")}
       >
         <div className="mb-2 text-[11px] uppercase tracking-[0.2em] opacity-60">
-          {isAssistant ? "Nasaa AI" : "You"}
+          {isAssistant ? "N/A" : "You"}
         </div>
         <div className="space-y-3">
-          {message.content.split("\n").map((paragraph) => (
-            <p key={`${message.id}-${paragraph}`} className="whitespace-pre-wrap text-[15px] leading-8 sm:text-[17px]">
+          {paragraphs.map((paragraph, index) => (
+            <p key={`${message.id}-${paragraph}-${index}`} className="whitespace-pre-wrap break-words text-[14px] leading-7 sm:text-[15px]">
               {renderInline(paragraph)}
+              {message.isStreaming && index === paragraphs.length - 1 ? (
+                <span className="ml-1 inline-block h-[1em] w-[2px] animate-pulse bg-gray-300 align-[-0.12em]" aria-hidden="true" />
+              ) : null}
             </p>
           ))}
+          {message.isStreaming && paragraphs.length === 0 ? (
+            <p className="text-[14px] leading-7 sm:text-[15px]">
+              <span className="inline-block h-[1em] w-[2px] animate-pulse bg-gray-300 align-[-0.12em]" aria-hidden="true" />
+            </p>
+          ) : null}
         </div>
-        {isAssistant && message.sources ? <ChatSources sources={message.sources} /> : null}
       </div>
+      )}
     </article>
   );
 };

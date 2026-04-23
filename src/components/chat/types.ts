@@ -11,5 +11,7 @@ export type ChatMessage = {
   id: string;
   role: ChatRole;
   content: string;
+  createdAt?: string;
   sources?: ChatSource[];
+  isStreaming?: boolean;
 };
