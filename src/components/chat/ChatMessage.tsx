@@ -74,7 +74,7 @@ const ChatMessage = ({ message }: Props) => {
         ].join(" ")}
       >
         <div className="mb-2 text-[11px] uppercase tracking-[0.2em] opacity-60">
-          {isAssistant ? "N/A" : "You"}
+          {isAssistant ? "Nas's assistant" : "You"}
         </div>
         <div className="space-y-3">
           {paragraphs.map((paragraph, index) => (

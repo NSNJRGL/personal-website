@@ -50,9 +50,11 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
   const [input, setInput] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const [placeholder, setPlaceholder] = useState("");
   const [visiblePrompts, setVisiblePrompts] = useState(() => starterPrompts.slice(0, 3));
   const bottomRef = useRef<HTMLDivElement | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const activeAssistantIdRef = useRef<string | null>(null);
   const tokenQueueRef = useRef<string[]>([]);
   const streamCompletedRef = useRef(false);
@@ -294,10 +296,14 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
 
   return (
     <div className="flex h-screen flex-col bg-white text-gray-900 dark:bg-black dark:text-gray-100">
-      <header className="z-20 bg-white/80 px-4 pb-4 pt-5 text-xs text-gray-500 backdrop-blur dark:bg-black/80 dark:text-gray-400 sm:px-6 lg:px-8">
+      <header
+        className={`sticky top-0 z-20 bg-white/80 px-4 pb-4 pt-5 text-xs text-gray-500 backdrop-blur transition-shadow dark:bg-black/80 dark:text-gray-400 sm:px-6 lg:px-8 ${
+          hasScrolled ? "shadow-[0_14px_30px_-22px_rgba(15,23,42,0.28)] dark:shadow-[0_14px_30px_-22px_rgba(0,0,0,0.72)]" : "shadow-none"
+        }`}
+      >
         <div className="mx-auto flex max-w-[min(100%,110rem)] items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <span className="text-sm font-semibold tracking-[0.18em] text-gray-900 dark:text-gray-100">N/A</span>
+            <span className="text-sm font-semibold tracking-[0.18em] text-gray-900 dark:text-gray-100">Nas's assistant</span>
           </div>
           <div className="flex items-center gap-3">
             {quickLinks.map((link) => (
@@ -316,7 +322,11 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
         </div>
       </header>
 
-      <div className="min-h-0 flex-1 overflow-y-auto">
+      <div
+        ref={scrollContainerRef}
+        className="min-h-0 flex-1 overflow-y-auto"
+        onScroll={(event) => setHasScrolled(event.currentTarget.scrollTop > 0)}
+      >
         <div className="mx-auto flex min-h-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
           <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col">
             <div className={`flex-1 space-y-7 pt-8 ${messages.length === 0 ? "pb-10" : "pb-32"}`}>
