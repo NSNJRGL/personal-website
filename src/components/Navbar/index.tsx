@@ -27,8 +27,9 @@ const NavBar = () => {
         >
           <nav className="flex-1">
             <ul className="flex space-x-4">
-              <NavLink href="/" title="/home" />
-              <NavLink href="/about" title="/about" />
+              <NavLink href="/" title="/v2" />
+              <NavLink href="/v1" title="/v1" />
+              <NavLink href="/v1/about" title="/v1/about" />
             </ul>
           </nav>
           <ToggleButton />

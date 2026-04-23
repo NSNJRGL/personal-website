@@ -1,0 +1,153 @@
+[
+  {
+    "id": "custom-observability-suite",
+    "name": "Custom Observability Suite",
+    "summary": "Designed and deployed a custom observability workflow to bridge Grafana alerts and engineering response.",
+    "problem": "Alerting and incident routing involved manual steps that slowed response time.",
+    "solution": "Built an automated notification-to-incident pipeline using Codex and Terraform.",
+    "impact": [
+      "Reduced manual routing",
+      "Cut down mean time to resolution",
+      "Improved incident response workflow"
+    ],
+    "tech": [
+      "Grafana",
+      "Terraform",
+      "Codex"
+    ],
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  },
+  {
+    "id": "server-rendered-pricing",
+    "name": "Server-Rendered PDP Pricing",
+    "summary": "Implemented server-rendered commerce card pricing for product detail pages.",
+    "problem": "Client-side pricing caused delayed price visibility on initial page load.",
+    "solution": "Moved pricing logic to the server side across Java, JSP, and frontend pricing flows.",
+    "impact": [
+      "Eliminated client-side pricing delay",
+      "Enabled immediate price visibility on page load",
+      "Preserved behavior parity across client and server systems"
+    ],
+    "tech": [
+      "Java",
+      "JSP",
+      "JavaScript",
+      "Codex"
+    ],
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  },
+  {
+    "id": "structured-data-migration",
+    "name": "Structured Data Server-Side Migration",
+    "summary": "Migrated schema implementation from client-side to server-side across a very large page footprint.",
+    "problem": "Client-side schema limited structured data visibility and SEO performance.",
+    "solution": "Refactored schema generation to server-side rendering across 150,000+ pages.",
+    "impact": [
+      "15% increase in search rankings",
+      "12% improvement in indexability",
+      "Improved structured data visibility"
+    ],
+    "tech": [
+      "JavaScript",
+      "TypeScript",
+      "Server-side rendering",
+      "SEO"
+    ],
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  },
+  {
+    "id": "mobile-performance-optimization",
+    "name": "Mobile Web Performance Optimization",
+    "summary": "Improved Core Web Vitals and interaction responsiveness across a large set of mobile pages.",
+    "problem": "Mobile interaction performance was poor across 200,000+ pages.",
+    "solution": "Refactored client-side implementation to reduce interaction latency.",
+    "impact": [
+      "Reduced INP from 500ms to 180ms",
+      "Improved Core Web Vitals",
+      "Created smoother user interactions"
+    ],
+    "tech": [
+      "JavaScript",
+      "TypeScript",
+      "Performance optimization",
+      "Core Web Vitals"
+    ],
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  },
+  {
+    "id": "image-gallery-ssr-refactor",
+    "name": "Image Gallery Server-Side Refactor",
+    "summary": "Refactored an image gallery library from client-side to server-side rendering.",
+    "problem": "Client-side rendering caused slow load times on product detail pages.",
+    "solution": "Moved image gallery rendering logic to the server side.",
+    "impact": [
+      "Reduced load times from 5 seconds to 2 seconds",
+      "Increased user engagement by 25%"
+    ],
+    "tech": [
+      "JavaScript",
+      "TypeScript",
+      "Server-side rendering",
+      "Performance optimization"
+    ],
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  },
+  {
+    "id": "social-qr-web-application",
+    "name": "Social QR Web Application",
+    "summary": "Led planning and implementation of a social QR web application.",
+    "problem": "[Add problem statement]",
+    "solution": "Built the application using Docker, MySQL, React, TailwindCSS, and Ruby on Rails.",
+    "impact": [
+      "[Add measurable impact if available]"
+    ],
+    "tech": [
+      "Docker",
+      "MySQL",
+      "React",
+      "TailwindCSS",
+      "Ruby on Rails"
+    ],
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  },
+  {
+    "id": "full-stack-web-application",
+    "name": "Full-Stack Web Application",
+    "summary": "Led development of a full-stack application spanning web and mobile technologies.",
+    "problem": "[Add problem statement]",
+    "solution": "Built using React, React Native, Node.js, RDS, TypeScript, and Redux.",
+    "impact": [
+      "[Add measurable impact if available]"
+    ],
+    "tech": [
+      "React",
+      "React Native",
+      "Node.js",
+      "AWS RDS",
+      "TypeScript",
+      "Redux"
+    ],
+    "links": {
+      "demo": "",
+      "github": ""
+    }
+  }
+]

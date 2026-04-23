@@ -1,7 +1,7 @@
 import "@styles/globals.css";
 import type { AppProps } from "next/app";
 import { Open_Sans } from "next/font/google";
-import { Router } from "next/router";
+import { Router, useRouter } from "next/router";
 import { useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import NavBar from "src/components/Navbar";
@@ -19,6 +19,8 @@ const openSans = Open_Sans({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   useEffect(() => {
     const handleRouteChangeStart = () => NProgress.start();
     const handleRouteChangeComplete = () => NProgress.done();
@@ -34,6 +36,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, []);
 
+  const isV1Route = router.pathname.startsWith("/v1");
+
   return (
     <>
       <Script
@@ -45,28 +49,34 @@ function MyApp({ Component, pageProps }: AppProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
+
           gtag('config', 'G-JCV41WFHNL');
         `}
       </Script>
       <ThemeProvider attribute="class" defaultTheme="dark">
-        <div
-          className={`${openSans.className} relative bg-white bg-gradient-to-tr dark:from-gray-900 dark:to-black dark:text-neutral-100`}
-        >
-          <NavBarMobile />
-          <div className="max-w-4xl px-5 pt-0 md:container md:mx-auto">
-            <NavBar />
-            <main className="mx-auto max-w-3xl space-y-12 sm:pt-11">
-              <Component {...pageProps} />
-            </main>
+        {isV1Route ? (
+          <div
+            className={`${openSans.className} relative bg-white bg-gradient-to-tr dark:from-gray-900 dark:to-black dark:text-neutral-100`}
+          >
+            <NavBarMobile />
+            <div className="max-w-4xl px-5 pt-0 md:container md:mx-auto">
+              <NavBar />
+              <main className="mx-auto max-w-3xl space-y-12 sm:pt-11">
+                <Component {...pageProps} />
+              </main>
 
-            <div className="mx-auto max-w-3xl py-8">
-              <hr className="border-t-2 border-gray-900/10 opacity-50 dark:border-white/10" />
-              <Footer />
+              <div className="mx-auto max-w-3xl py-8">
+                <hr className="border-t-2 border-gray-900/10 opacity-50 dark:border-white/10" />
+                <Footer />
+              </div>
             </div>
+            <AnimatedFooter />
           </div>
-          <AnimatedFooter />
-        </div>
+        ) : (
+          <div className={openSans.className}>
+            <Component {...pageProps} />
+          </div>
+        )}
       </ThemeProvider>
       <SpeedInsights />
     </>

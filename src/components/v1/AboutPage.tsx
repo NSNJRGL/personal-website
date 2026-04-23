@@ -1,0 +1,68 @@
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import { IoIosCloudDownload } from "react-icons/io";
+import AnimatedDiv from "src/components/AnimatedDiv";
+
+const AboutPage: NextPage = () => {
+  return (
+    <>
+      <Head>
+        <title>About Nasanjargal Binderiya | V1</title>
+        <meta property="og:title" content="About" key="title" />
+      </Head>
+      <AnimatedDiv>
+        <h1 className="text-3xl font-bold">Little bit about me</h1>
+
+        <div className="text-gray-900/30 hover:text-gray-900 dark:text-white/20 dark:hover:text-white/100 transition-all">
+          <Image
+            alt="Nasanjargal with Sys&CoTech colleagues"
+            src="/image.png"
+            height={400}
+            width={1000}
+            sizes="(min-width: 1024px) 1000px, 100vw"
+            className="block h-auto w-full rounded-xl border-2 border-white object-cover"
+          />
+          <span className="text-sm not-sr-only">
+            Me and{" "}
+            <a href="https://www.syscotech.club/" rel="noopener noreferrer" target="_blank">
+              Sys&CoTech folks
+            </a>
+          </span>
+        </div>
+      </AnimatedDiv>
+
+      <AnimatedDiv>
+        <div className="max-w-3xl mx-auto">
+          <div className="space-y-6 text-lg leading-relaxed text-gray-700 dark:text-gray-400">
+            <p>
+              Hello! I'm a passionate Full-Stack Software Engineer driven by the challenge of building efficient, scalable, and user-friendly digital experiences. What truly excites me about this field is that <strong>I always love to learn</strong>. Technology is constantly evolving, and I thrive on diving into new frameworks, exploring different architectural patterns, and continuously honing my craft to stay ahead of the curve.
+            </p>
+            <p>
+              Professionally, I enjoy tackling the entire development lifecycle. I'm comfortable taking ownership and seeing projects through <strong>from analyzing the initial system requirements all the way to meeting the final project deadline</strong>. There's a deep satisfaction in transforming an idea into a tangible, high-quality product that solves real problems.
+            </p>
+            <p>
+              When I step away from the keyboard, you'll often find me with a guitar in hand. <strong>I love playing both acoustic and electric guitar</strong> - it's my go-to creative outlet for unwinding and exploring a different kind of expression. 🎸 It's a great balance to the analytical nature of coding!
+            </p>
+            <p>
+              I believe this blend of technical curiosity, project dedication, and creative thinking allows me to bring a unique and valuable perspective to the teams and projects I work on.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <a
+            href="/resume.pdf"
+            download="resume.pdf"
+            className="inline-flex bg-gray-900 dark:bg-gray-800 items-center gap-x-2 px-6 py-3 border border-transparent text-base font-semibold rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 transition duration-150 ease-in-out"
+          >
+            <IoIosCloudDownload className="h-5 w-5" aria-hidden="true" />
+            Download Resume
+          </a>
+        </div>
+      </AnimatedDiv>
+    </>
+  );
+};
+
+export default AboutPage;

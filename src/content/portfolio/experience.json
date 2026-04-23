@@ -1,0 +1,90 @@
+[
+  {
+    "id": "thermo-fisher-scientific",
+    "company": "Thermo Fisher Scientific",
+    "role": "Full Stack Software Engineer",
+    "startDate": "2022-04",
+    "endDate": "Present",
+    "summary": "Worked on large-scale web platform improvements across observability, performance, SEO, and commerce experiences. Focused on server-side rendering, AI-assisted engineering workflows, and web performance optimization at high page volume.",
+    "highlights": [
+      "Architected and deployed a custom observability suite from scratch to bridge the gap between Grafana alerts and engineering response.",
+      "Automated the notification-to-incident pipeline with Codex and Terraform, reducing manual routing and lowering mean time to resolution.",
+      "Led implementation of server-rendered PDP commerce card pricing, eliminating client-side pricing delay and enabling immediate price visibility on page load.",
+      "Used Codex to accelerate codebase analysis and cross-stack implementation across Java, JSP, and frontend pricing flows while preserving client/server behavior parity.",
+      "Migrated Java development workflows to VS Code, enabling GitHub Copilot adoption and increasing AI-assisted coding adoption by 70%.",
+      "Refactored schema implementation from client-side to server-side across 150,000+ pages, improving structured data visibility and SEO performance.",
+      "Delivered a 15% increase in search rankings and a 12% improvement in indexability through SEO-focused technical changes.",
+      "Optimized mobile web performance for 200,000+ BID pages, reducing INP from 500ms to 180ms.",
+      "Refactored an image gallery library from client-side to server-side, reducing load times from 5 seconds to 2 seconds and improving user engagement by 25%."
+    ],
+    "tech": [
+      "Java",
+      "Struts 2",
+      "Spring boot",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Angular",
+      "AngularJs",
+      "Next.js",
+      "Grafana",
+      "Terraform",
+      "Codex",
+      "GitHub Copilot"
+    ],
+    "domain": "E-commerce / enterprise web platform",
+    "url": "https://www.thermofisher.com"
+  },
+  {
+    "id": "unimedia-solutions",
+    "company": "Unimedia Solutions",
+    "role": "Front-end and Mobile Engineer",
+    "startDate": "2020-06",
+    "endDate": "2021-07",
+    "summary": "Built mobile and web product features across both frontend and backend systems, with a focus on user-facing modules and application infrastructure.",
+    "highlights": [
+      "Developed user-facing features such as authentication, chat, and user settings for mobile and web applications.",
+      "Built applications using React, React Native, and Next.js.",
+      "Developed backend modules for recruiting and chat systems.",
+      "Worked with Ruby on Rails, AWS S3, RDS, and DynamoDB for mobile and web applications."
+    ],
+    "tech": [
+      "React",
+      "React Native",
+      "Next.js",
+      "Ruby on Rails",
+      "AWS S3",
+      "AWS RDS",
+      "DynamoDB"
+    ],
+    "domain": "SaaS / web and mobile applications / Outsourcing to Japanese clients",
+    "url": "https://unimedia.mn/"
+  },
+  {
+    "id": "qualsmart-solutions",
+    "company": "Qualsmart Solutions",
+    "role": "Full-Stack Engineer",
+    "startDate": "2018-06",
+    "endDate": "2020-06",
+    "summary": "Worked across full-stack application delivery, leading planning and implementation of web and mobile systems using modern frontend and backend technologies.",
+    "highlights": [
+      "Initiated, planned, and executed a social QR web application.",
+      "Built the application using Docker, MySQL, React, TailwindCSS, and Ruby on Rails.",
+      "Led development of a full-stack web application using React, React Native, Node.js, RDS, TypeScript, and Redux."
+    ],
+    "tech": [
+      "Docker",
+      "MySQL",
+      "React",
+      "TailwindCSS",
+      "Ruby on Rails",
+      "React Native",
+      "Node.js",
+      "AWS RDS",
+      "TypeScript",
+      "Redux"
+    ],
+    "domain": "SaaS / web and mobile applications / Outsourcing to Japanese clients",
+    "url": "https://www.qualsmart.com/"
+  }
+]

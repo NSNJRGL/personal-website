@@ -46,8 +46,9 @@ const NavBarMobile = () => {
           <div className="flex items-center justify-between space-x-2 bg-transparent transition-colors">
             <nav className="flex-1" aria-label="Mobile">
               <ul className="flex space-x-4">
-                <NavLink href="/" title="/home" />
-                <NavLink href="/about" title="/about" />
+                <NavLink href="/" title="/v2" />
+                <NavLink href="/v1" title="/v1" />
+                <NavLink href="/v1/about" title="/about" />
               </ul>
             </nav>
 

@@ -1,0 +1,26 @@
+{
+  "name": "Nasanjargal Binderiya",
+  "headline": "Full Stack Software Engineer",
+  "shortBio": "Full Stack Software Engineer with over 7 years of experience building scalable web applications and optimizing performance across client and server systems. Experienced in leveraging AI-native workflows such as Codex and OpenCode to accelerate complex migrations at scale.",
+  "location": "Austin, TX, USA",
+  "phone": "641-819-1618",
+  "email": "nbinderiyaa@gmail.com",
+  "yearsOfExperience": 7,
+  "currentRole": "Full Stack Software Engineer @ Thermo Fisher Scientific",
+  "currentFocus": [
+    "Scalable web applications",
+    "Web performance optimization",
+    "Server-side rendering",
+    "SEO and structured data improvements",
+    "AI-native engineering workflows",
+    "Observability and incident response automation"
+  ],
+  "personalInterests": [
+    "Acoustic guitar",
+    "Electric guitar",
+    "Dota 2",
+    "Watching Breaking Bad LOL"
+  ],
+  "educationSummary": "Master's degree in Computer Science from Maharishi International University and Bachelor's degree in Information Technology from Mongolian University of Science and Technology.",
+  "status": "open to work / open to freelance"
+}

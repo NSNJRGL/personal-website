@@ -1,0 +1,67 @@
+{
+  "languages": [
+    "Python",
+    "Java",
+    "JavaScript",
+    "TypeScript",
+    "Ruby"
+  ],
+  "frontend": [
+    "React.js",
+    "Next.js",
+    "Angular",
+    "AngularJS",
+    "React Native",
+    "TailwindCSS",
+    "Material-UI",
+    "Ant Design",
+    "jQuery"
+  ],
+  "backend": [
+    "Node.js",
+    "Express",
+    "Ruby on Rails",
+    "GraphQL",
+    "REST"
+  ],
+  "stateManagement": [
+    "Redux",
+    "Redux-Thunk",
+    "Redux-Saga",
+    "RXJS"
+  ],
+  "testing": [
+    "Jest",
+    "Postman",
+    "ESLint"
+  ],
+  "aiTools": [
+    "Cursor",
+    "MCP",
+    "Codex",
+    "GitHub Copilot"
+  ],
+  "cloud": [
+    "AWS S3",
+    "AWS RDS",
+    "EC2",
+    "DigitalOcean",
+    "Terraform"
+  ],
+  "databases": [
+    "MySQL",
+    "PostgreSQL",
+    "DynamoDB"
+  ],
+  "devOpsAndInfra": [
+    "Docker",
+    "NGINX",
+    "Apache",
+    "Capistrano",
+    "Grafana"
+  ],
+  "designAndCollaboration": [
+    "Git",
+    "Figma"
+  ]
+}
