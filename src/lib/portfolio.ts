@@ -15,7 +15,7 @@ export type PortfolioLinkSet = {
   portfolioV1?: string;
 };
 
-type Profile = {
+export type PortfolioProfile = {
   name: string;
   headline: string;
   shortBio: string;
@@ -30,7 +30,7 @@ type Profile = {
   status?: string;
 };
 
-type ExperienceItem = {
+export type PortfolioExperienceItem = {
   id: string;
   company: string;
   role: string;
@@ -43,7 +43,7 @@ type ExperienceItem = {
   url?: string;
 };
 
-type ProjectItem = {
+export type PortfolioProjectItem = {
   id: string;
   name: string;
   summary: string;
@@ -57,7 +57,7 @@ type ProjectItem = {
   };
 };
 
-type Skills = Record<string, string[]>;
+export type PortfolioSkills = Record<string, string[]>;
 
 type FaqItem = {
   question: string;
@@ -80,10 +80,10 @@ export type PortfolioSource = {
   url?: string;
 };
 
-const profile = profileData as Profile;
-const experience = experienceData as ExperienceItem[];
-const projects = projectsData as ProjectItem[];
-const skills = skillsData as Skills;
+const profile = profileData as PortfolioProfile;
+const experience = experienceData as PortfolioExperienceItem[];
+const projects = projectsData as PortfolioProjectItem[];
+const skills = skillsData as PortfolioSkills;
 const links = linksData as PortfolioLinkSet;
 const faq = (faqData as FaqItem[]) || [];
 
@@ -116,7 +116,7 @@ const sanitizeOptionalUrl = (value?: string) => {
   return trimmedValue;
 };
 
-export const buildProjectChunkContent = (item: Pick<ProjectItem, "summary" | "problem" | "solution" | "impact" | "tech">) => {
+export const buildProjectChunkContent = (item: Pick<PortfolioProjectItem, "summary" | "problem" | "solution" | "impact" | "tech">) => {
   const sanitizedImpact = sanitizeTextList(item.impact);
   const problem = sanitizeOptionalText(item.problem);
   const solution = sanitizeOptionalText(item.solution);
@@ -134,6 +134,12 @@ export const buildProjectChunkContent = (item: Pick<ProjectItem, "summary" | "pr
 };
 
 export const getPortfolioProfile = () => profile;
+
+export const getPortfolioExperience = () => experience;
+
+export const getPortfolioProjects = () => projects;
+
+export const getPortfolioSkills = () => skills;
 
 export const getPortfolioLinks = () => links;
 

@@ -3,6 +3,12 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import AnimatedDiv from "src/components/AnimatedDiv";
 import TechStackSection from "src/components/Technology/TechStackSection";
+import { getPortfolioProfile } from "src/lib/portfolio";
+import { getV1FeatureCards, getV1HomeIntro } from "src/lib/portfolioV1";
+
+const profile = getPortfolioProfile();
+const homeIntro = getV1HomeIntro();
+const featureCards = getV1FeatureCards();
 
 const HomePage: NextPage = () => {
   return (
@@ -18,7 +24,7 @@ const HomePage: NextPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: [0.6, 0.01, -0.05, 0.95] }}
         >
-          Hi, I'm Nasanjargal <WavingHand />
+          Hi, I&apos;m {homeIntro.name.split(" ")[0]} <WavingHand />
         </motion.h1>
         <motion.p
           className="opacity-80"
@@ -26,7 +32,7 @@ const HomePage: NextPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: [0.6, 0.01, -0.05, 0.95] }}
         >
-          Software Engineer with 6 years of experience designing scalable web applications and improving performance across both client-side and server-side systems. Proficient in modern frameworks and agile methodologies, with a track record of reducing load times, enhancing user engagement, and optimizing system reliability.
+          {homeIntro.shortBio}
         </motion.p>
       </AnimatedDiv>
       <AnimatedDiv>
@@ -36,63 +42,28 @@ const HomePage: NextPage = () => {
         <section>
           <div className="max-w-4xl mx-auto">
             <p className="text-left text-gray-700 dark:text-gray-300 mb-10 sm:mb-12 leading-relaxed">
-              Think of me as a <strong>Digital Swiss Army Knife</strong> (or a <strong>Full-Stack Software Engineer</strong> when I'm feeling fancy! 😉). I dive into the code, tinker 'til it shines, and basically love making digital things awesome. Here's the fun stuff:
+              {homeIntro.focusIntro}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-              <div className="bg-white dark:bg-gray-700/50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex items-start space-x-4">
-                <div className="flex-shrink-0 text-3xl mt-1">🚀</div>
-                <div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">Performance Wizard</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                    Turning sluggish sites into speed demons! Slashing load times (like 5s down to 2s) and optimizing INP (500ms to 180ms) makes users happy, and that makes me happy. 🎉
-                  </p>
+              {featureCards.map((card) => (
+                <div
+                  key={card.id}
+                  className={`bg-white dark:bg-gray-700/50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex items-start space-x-4 ${card.isWide ? "md:col-span-2" : ""}`}
+                >
+                  <div className="flex-shrink-0 text-3xl mt-1">{card.icon}</div>
+                  <div>
+                    <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">{card.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
+                      {card.body}
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div className="bg-white dark:bg-gray-700/50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex items-start space-x-4">
-                <div className="flex-shrink-0 text-3xl mt-1">🤹</div>
-                <div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">Tech Juggler 🎪</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                    React, Angular, Ruby, Node, AWS, databases... I enjoy wrangling a diverse tech stack! Choosing the right tools and making them work together seamlessly is a fun challenge. 🛠️
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white dark:bg-gray-700/50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex items-start space-x-4">
-                <div className="flex-shrink-0 text-3xl mt-1">🏗️</div>
-                <div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">Builder of Cool Things</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                    From slick user interfaces to robust backend systems, I love the whole process. Being both the architect and the coder bringing digital ideas to life is incredibly rewarding. ✨
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white dark:bg-gray-700/50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex items-start space-x-4">
-                <div className="flex-shrink-0 text-3xl mt-1">🐛</div>
-                <div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">Bug Detective</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                    Hunting down elusive bugs is like solving a puzzle. I enjoy the chase, figuring out the 'why', and squashing them for good, often with trusty tools like Cucumber. 🕵️‍♂️🔍
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-white dark:bg-gray-700/50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out flex items-start space-x-4 md:col-span-2">
-                <div className="flex-shrink-0 text-3xl mt-1">⚡</div>
-                <div>
-                  <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">Need for Speed!</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base">
-                    Optimizing queries to take processing time from <strong>1 minute down to 3 seconds</strong>? Absolutely! Seeing those performance numbers skyrocket is seriously satisfying. 💨
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
             <p className="text-lg text-left text-gray-700 dark:text-gray-300 mt-10 sm:mt-12 leading-relaxed">
-              So yeah, that's me! A tech enthusiast <strong>passionately building, optimizing, and polishing the web</strong>, striving to make our digital world faster and more delightful, one project at a time! 🌍💻
+              Currently {profile.currentRole}. Availability: {profile.status}. 🌍💻
             </p>
           </div>
         </section>
