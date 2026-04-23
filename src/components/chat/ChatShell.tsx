@@ -295,9 +295,9 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
   };
 
   return (
-    <div className="flex h-screen flex-col bg-white text-gray-900 dark:bg-black dark:text-gray-100">
+    <div className="flex h-[100svh] flex-col bg-white text-gray-900 dark:bg-black dark:text-gray-100">
       <header
-        className={`sticky top-0 z-20 bg-white/80 px-4 pb-4 pt-5 text-xs text-gray-500 backdrop-blur transition-shadow dark:bg-black/80 dark:text-gray-400 sm:px-6 lg:px-8 ${
+        className={`sticky top-0 z-20 bg-white/80 px-4 pb-3 pt-4 text-xs text-gray-500 backdrop-blur transition-shadow dark:bg-black/80 dark:text-gray-400 sm:px-6 sm:pb-4 sm:pt-5 lg:px-8 ${
           hasScrolled ? "shadow-[0_14px_30px_-22px_rgba(15,23,42,0.28)] dark:shadow-[0_14px_30px_-22px_rgba(0,0,0,0.72)]" : "shadow-none"
         }`}
       >
@@ -329,17 +329,17 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
       >
         <div className="mx-auto flex min-h-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
           <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col">
-            <div className={`flex-1 space-y-7 pt-8 ${messages.length === 0 ? "pb-10" : "pb-32"}`}>
+            <div className={`flex-1 space-y-7 pt-6 sm:pt-8 ${messages.length === 0 ? "pb-8 sm:pb-10" : "pb-28 sm:pb-32"}`}>
             {messages.length === 0 ? (
-              <div className="pt-10 sm:pt-16">
-                <div className="mb-8 text-xs uppercase tracking-[0.28em] text-gray-500 dark:text-gray-500">Thought for a moment</div>
+              <div className="pt-4 sm:pt-16">
+                <div className="mb-6 text-xs uppercase tracking-[0.28em] text-gray-500 dark:text-gray-500 sm:mb-8">Thought for a moment</div>
                 <h1 className="max-w-2xl text-2xl font-medium leading-tight text-gray-900 dark:text-white sm:text-4xl">
                   Ask {name} through a chat-native portfolio.
                 </h1>
-                <p className="mt-6 max-w-2xl text-sm leading-7 text-gray-600 dark:text-gray-300 sm:text-base">
+                <p className="mt-4 max-w-2xl text-sm leading-6 text-gray-600 dark:text-gray-300 sm:mt-6 sm:text-base sm:leading-7">
                   {shortBio}
                 </p>
-                <p className="mt-6 text-sm text-gray-500 dark:text-gray-500">
+                <p className="mt-4 text-sm text-gray-500 dark:text-gray-500 sm:mt-6">
                   Focused on {focus.join(", ")}. Ask about experience, projects, skills, interests, or how to get in touch.
                 </p>
               </div>
@@ -355,8 +355,8 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
             <div ref={bottomRef} />
             </div>
 
-            <div className="sticky bottom-0 mt-auto bg-gradient-to-t from-white via-white/95 to-transparent pb-6 pt-4 backdrop-blur dark:from-black dark:via-black/95">
-              <div className="mb-4">
+            <div className="sticky bottom-0 mt-auto bg-gradient-to-t from-white via-white/95 to-transparent pb-4 pt-3 backdrop-blur dark:from-black dark:via-black/95 sm:pb-6 sm:pt-4">
+              <div className="mb-3 sm:mb-4">
                 <SuggestedPrompts prompts={visiblePrompts} onSelect={handlePromptSelect} />
               </div>
               <ChatComposer
