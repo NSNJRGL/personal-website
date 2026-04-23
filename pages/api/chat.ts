@@ -9,6 +9,15 @@ type ErrorResponse = {
   error: string;
 };
 
+const writeServerSentEvent = (
+  res: NextApiResponse<ErrorResponse>,
+  event: string,
+  data: unknown,
+) => {
+  res.write(`event: ${event}\n`);
+  res.write(`data: ${JSON.stringify(data)}\n\n`);
+};
+
 const isChatMessage = (value: unknown): value is ChatMessage => {
   if (!value || typeof value !== "object") {
     return false;
@@ -53,14 +62,11 @@ export default async function handler(
     });
 
     const result = await streamPortfolioAnswer(messages, (token) => {
-      res.write(`event: token\n`);
-      res.write(`data: ${JSON.stringify(token)}\n\n`);
+      writeServerSentEvent(res, "token", token);
     });
 
-    res.write(`event: sources\n`);
-    res.write(`data: ${JSON.stringify(result.sources)}\n\n`);
-    res.write("event: done\n");
-    res.write("data: ok\n\n");
+    writeServerSentEvent(res, "sources", result.sources);
+    writeServerSentEvent(res, "done", "ok");
     res.end();
     return;
   } catch (error) {
@@ -71,8 +77,7 @@ export default async function handler(
       return res.status(500).json({ error: message });
     }
 
-    res.write("event: error\n");
-    res.write(`data: ${JSON.stringify(message)}\n\n`);
+    writeServerSentEvent(res, "error", message);
     res.end();
     return;
   }

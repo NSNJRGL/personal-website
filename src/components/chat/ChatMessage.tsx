@@ -66,32 +66,27 @@ const ChatMessage = ({ message }: Props) => {
         </div>
       ) : (
         <div
-          className={[
-          "min-w-0 w-full px-4 py-3",
-          isAssistant
-            ? "text-gray-700 dark:text-gray-200"
-            : "rounded-3xl bg-[#1b1b1d] text-white shadow-sm",
-        ].join(" ")}
-      >
-        <div className="mb-2 text-[11px] uppercase tracking-[0.2em] opacity-60">
-          {isAssistant ? "Nas's assistant" : "You"}
+          className="min-w-0 w-full px-4 py-3 text-gray-700 dark:text-gray-200"
+        >
+          <div className="mb-2 text-[11px] uppercase tracking-[0.2em] opacity-60">
+            Nas&apos;s assistant
+          </div>
+          <div className="space-y-3">
+            {paragraphs.map((paragraph, index) => (
+              <p key={`${message.id}-${paragraph}-${index}`} className="whitespace-pre-wrap break-words text-[14px] leading-7 sm:text-[15px]">
+                {renderInline(paragraph)}
+                {message.isStreaming && index === paragraphs.length - 1 ? (
+                  <span className="ml-1 inline-block h-[1em] w-[2px] animate-pulse bg-gray-300 align-[-0.12em]" aria-hidden="true" />
+                ) : null}
+              </p>
+            ))}
+            {message.isStreaming && paragraphs.length === 0 ? (
+              <p className="text-[14px] leading-7 sm:text-[15px]">
+                <span className="inline-block h-[1em] w-[2px] animate-pulse bg-gray-300 align-[-0.12em]" aria-hidden="true" />
+              </p>
+            ) : null}
+          </div>
         </div>
-        <div className="space-y-3">
-          {paragraphs.map((paragraph, index) => (
-            <p key={`${message.id}-${paragraph}-${index}`} className="whitespace-pre-wrap break-words text-[14px] leading-7 sm:text-[15px]">
-              {renderInline(paragraph)}
-              {message.isStreaming && index === paragraphs.length - 1 ? (
-                <span className="ml-1 inline-block h-[1em] w-[2px] animate-pulse bg-gray-300 align-[-0.12em]" aria-hidden="true" />
-              ) : null}
-            </p>
-          ))}
-          {message.isStreaming && paragraphs.length === 0 ? (
-            <p className="text-[14px] leading-7 sm:text-[15px]">
-              <span className="inline-block h-[1em] w-[2px] animate-pulse bg-gray-300 align-[-0.12em]" aria-hidden="true" />
-            </p>
-          ) : null}
-        </div>
-      </div>
       )}
     </motion.article>
   );
