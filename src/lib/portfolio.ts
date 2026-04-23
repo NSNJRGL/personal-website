@@ -89,7 +89,49 @@ const faq = (faqData as FaqItem[]) || [];
 
 const formatSkillSection = (name: string, values: string[]) => `${name}: ${values.join(", ")}`;
 
-const hasPlaceholder = (value?: string) => Boolean(value && value.includes("[Add"));
+export const isPlaceholderContent = (value?: string) => Boolean(value && value.includes("[Add"));
+
+const sanitizeOptionalText = (value?: string) => {
+  const trimmedValue = value?.trim();
+
+  if (!trimmedValue || isPlaceholderContent(trimmedValue)) {
+    return "";
+  }
+
+  return trimmedValue;
+};
+
+const sanitizeTextList = (values: string[]) =>
+  values
+    .map((value) => sanitizeOptionalText(value))
+    .filter((value): value is string => Boolean(value));
+
+const sanitizeOptionalUrl = (value?: string) => {
+  const trimmedValue = value?.trim();
+
+  if (!trimmedValue || isPlaceholderContent(trimmedValue)) {
+    return undefined;
+  }
+
+  return trimmedValue;
+};
+
+export const buildProjectChunkContent = (item: Pick<ProjectItem, "summary" | "problem" | "solution" | "impact" | "tech">) => {
+  const sanitizedImpact = sanitizeTextList(item.impact);
+  const problem = sanitizeOptionalText(item.problem);
+  const solution = sanitizeOptionalText(item.solution);
+  const summary = sanitizeOptionalText(item.summary);
+
+  return [
+    summary,
+    problem ? `Problem: ${problem}` : "",
+    solution ? `Solution: ${solution}` : "",
+    sanitizedImpact.length ? `Impact: ${sanitizedImpact.join(" ")}` : "",
+    `Technologies: ${item.tech.join(", ")}.`,
+  ]
+    .filter(Boolean)
+    .join(" ");
+};
 
 export const getPortfolioProfile = () => profile;
 
@@ -130,7 +172,7 @@ export const getPortfolioChunks = (): PortfolioChunk[] => {
       id: `${item.id}-summary`,
       type: "experience",
       title: `${item.role} at ${item.company}`,
-      url: hasPlaceholder(item.url) ? undefined : item.url,
+      url: sanitizeOptionalUrl(item.url),
       tags: [item.company, item.role, ...item.tech],
       content: [
         `${item.role} at ${item.company} from ${item.startDate} to ${item.endDate}.`,
@@ -149,15 +191,9 @@ export const getPortfolioChunks = (): PortfolioChunk[] => {
       id: item.id,
       type: "project",
       title: item.name,
-      url: item.links?.demo || item.links?.github,
+      url: sanitizeOptionalUrl(item.links?.demo) || sanitizeOptionalUrl(item.links?.github),
       tags: [item.name, ...item.tech],
-      content: [
-        item.summary,
-        `Problem: ${item.problem}`,
-        `Solution: ${item.solution}`,
-        `Impact: ${item.impact.join(" ")}`,
-        `Technologies: ${item.tech.join(", ")}.`,
-      ].join(" "),
+      content: buildProjectChunkContent(item),
     });
   }
 

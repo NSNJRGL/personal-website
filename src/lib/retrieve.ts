@@ -1,14 +1,14 @@
 import { createHash } from "crypto";
 import { getEmbeddingModel, getOpenAIClient } from "./openai";
 import { getPortfolioChunks, type PortfolioChunk } from "./portfolio";
+import { createRetryableAsyncSingleton } from "./retryableAsyncSingleton";
 
 type EmbeddedChunk = {
   chunk: PortfolioChunk;
   embedding: number[];
 };
 
-let embeddedCorpusPromise: Promise<EmbeddedChunk[]> | null = null;
-let embeddedCorpusHash = "";
+const embeddedCorpusCache = createRetryableAsyncSingleton<EmbeddedChunk[]>();
 
 const normalizeText = (value: string) =>
   value
@@ -63,12 +63,7 @@ const getEmbeddedCorpus = async () => {
   const chunks = getPortfolioChunks();
   const nextHash = getCorpusHash(chunks);
 
-  if (embeddedCorpusPromise && embeddedCorpusHash === nextHash) {
-    return embeddedCorpusPromise;
-  }
-
-  embeddedCorpusHash = nextHash;
-  embeddedCorpusPromise = (async () => {
+  return embeddedCorpusCache.load(nextHash, async () => {
     const client = getOpenAIClient();
     const response = await client.embeddings.create({
       model: getEmbeddingModel(),
@@ -79,9 +74,7 @@ const getEmbeddedCorpus = async () => {
       chunk,
       embedding: response.data[index].embedding,
     }));
-  })();
-
-  return embeddedCorpusPromise;
+  });
 };
 
 export const retrieveRelevantChunks = async (question: string, limit = 5) => {

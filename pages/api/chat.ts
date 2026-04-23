@@ -1,5 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { streamPortfolioAnswer, type ChatMessage } from "src/lib/chat";
+import {
+  logPortfolioChatError,
+  toPublicChatErrorMessage,
+} from "src/lib/chatError";
 
 type ErrorResponse = {
   error: string;
@@ -60,7 +64,8 @@ export default async function handler(
     res.end();
     return;
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to answer question.";
+    logPortfolioChatError("stream failed", error);
+    const message = toPublicChatErrorMessage(error);
 
     if (!res.headersSent) {
       return res.status(500).json({ error: message });
