@@ -59,7 +59,7 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
   const promptRotationIndexRef = useRef(3);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView();
   }, [messages, isLoading]);
 
   useEffect(() => {
@@ -293,9 +293,9 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
   };
 
   return (
-    <div className="h-screen overflow-y-auto bg-white text-gray-900 dark:bg-black dark:text-gray-100">
-      <div className="mx-auto flex min-h-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
-        <header className="sticky top-0 z-20 -mx-4 flex items-center justify-between gap-4 bg-white/80 px-4 pb-4 pt-5 text-xs text-gray-500 backdrop-blur dark:bg-black/80 dark:text-gray-400 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+    <div className="flex h-screen flex-col bg-white text-gray-900 dark:bg-black dark:text-gray-100">
+      <header className="z-20 bg-white/80 px-4 pb-4 pt-5 text-xs text-gray-500 backdrop-blur dark:bg-black/80 dark:text-gray-400 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[min(100%,110rem)] items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="text-sm font-semibold tracking-[0.18em] text-gray-900 dark:text-gray-100">N/A</span>
           </div>
@@ -313,10 +313,13 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
             ))}
             <ToggleButton />
           </div>
-        </header>
+        </div>
+      </header>
 
-        <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col">
-          <div className="flex-1 space-y-7 pb-10 pt-8">
+      <div className="min-h-0 flex-1 overflow-y-auto">
+        <div className="mx-auto flex min-h-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
+          <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col">
+            <div className={`flex-1 space-y-7 pt-8 ${messages.length === 0 ? "pb-10" : "pb-32"}`}>
             {messages.length === 0 ? (
               <div className="pt-10 sm:pt-16">
                 <div className="mb-8 text-xs uppercase tracking-[0.28em] text-gray-500 dark:text-gray-500">Thought for a moment</div>
@@ -340,24 +343,25 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
               </div>
             ) : null}
             <div ref={bottomRef} />
-          </div>
-
-          <div className="sticky bottom-0 mt-auto bg-gradient-to-t from-white via-white/95 to-transparent pb-6 pt-4 backdrop-blur dark:from-black dark:via-black/95">
-            <div className="mb-4">
-              <SuggestedPrompts prompts={visiblePrompts} onSelect={handlePromptSelect} />
             </div>
-            <ChatComposer
-              value={input}
-              placeholder={placeholder}
-              onChange={setInput}
-              onSubmit={() => submitQuestion()}
-              isLoading={isLoading}
-            />
-            <p className="mt-3 text-center text-xs text-gray-500 dark:text-gray-500">
-              Answers are grounded in resume, project, and profile data. AI may still make mistakes.
-            </p>
-          </div>
-        </section>
+
+            <div className="sticky bottom-0 mt-auto bg-gradient-to-t from-white via-white/95 to-transparent pb-6 pt-4 backdrop-blur dark:from-black dark:via-black/95">
+              <div className="mb-4">
+                <SuggestedPrompts prompts={visiblePrompts} onSelect={handlePromptSelect} />
+              </div>
+              <ChatComposer
+                value={input}
+                placeholder={placeholder}
+                onChange={setInput}
+                onSubmit={() => submitQuestion()}
+                isLoading={isLoading}
+              />
+              <p className="mt-3 text-center text-xs text-gray-500 dark:text-gray-500">
+                Answers are grounded in resume, project, and profile data. AI may still make mistakes.
+              </p>
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import type { ChatMessage as ChatMessageType } from "./types";
 
 type Props = {
@@ -33,7 +34,12 @@ const ChatMessage = ({ message }: Props) => {
   };
 
   return (
-    <article className={`min-w-0 overflow-x-hidden flex ${isAssistant ? "justify-start" : "justify-end"}`}>
+    <motion.article
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.22, ease: "easeOut" }}
+      className={`min-w-0 overflow-x-hidden flex ${isAssistant ? "justify-start" : "justify-end"}`}
+    >
       {!isAssistant ? (
         <div className="max-w-[92%] sm:max-w-[82%]">
           <div className="mb-1 flex items-center justify-end gap-1.5 pr-1 text-[11px] font-medium text-gray-500 dark:text-gray-400">
@@ -87,7 +93,7 @@ const ChatMessage = ({ message }: Props) => {
         </div>
       </div>
       )}
-    </article>
+    </motion.article>
   );
 };
 

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { FormEvent, KeyboardEvent } from "react";
 
 type Props = {
@@ -36,11 +37,13 @@ const ChatComposer = ({ value, placeholder, onChange, onSubmit, isLoading }: Pro
           placeholder={placeholder}
           className="max-h-28 min-h-[36px] flex-1 resize-none border-0 bg-transparent px-3 py-1.5 text-sm text-gray-900 outline-none placeholder:text-gray-500 dark:text-gray-100"
         />
-        <button
+        <motion.button
           type="submit"
           disabled={isLoading || !value.trim()}
           aria-label={isLoading ? "Generating response" : "Send message"}
           className="inline-flex h-8 w-8 items-center justify-center rounded-[0.8rem] bg-gray-900 text-white transition hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+          whileHover={isLoading || !value.trim() ? undefined : { scale: 1.04 }}
+          whileTap={isLoading || !value.trim() ? undefined : { scale: 0.96 }}
         >
           {isLoading ? (
             <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -63,7 +66,7 @@ const ChatComposer = ({ value, placeholder, onChange, onSubmit, isLoading }: Pro
               />
             </svg>
           )}
-        </button>
+        </motion.button>
       </div>
     </form>
   );
