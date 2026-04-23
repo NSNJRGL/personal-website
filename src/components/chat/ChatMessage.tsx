@@ -43,15 +43,15 @@ const ChatMessage = ({ message }: Props) => {
             </svg>
             <span className="leading-none">{timestamp}</span>
           </div>
-          <div className="relative overflow-hidden rounded-[1.7rem] bg-gray-900 px-6 py-3 text-white shadow-sm dark:bg-[#1b1b1d]">
+          <div className="relative overflow-hidden rounded-full bg-gray-100 px-5 py-2.5 text-gray-700 shadow-sm dark:bg-[#1b1b1d] dark:text-white">
             <span
               aria-hidden="true"
-              className="absolute right-0 top-2 h-4 w-4 translate-x-[35%] rounded-tr-[0.85rem] bg-gray-900 dark:bg-[#1b1b1d]"
+              className="absolute right-0 top-2 h-3.5 w-3.5 translate-x-[35%] rounded-tr-[0.85rem] bg-gray-100 dark:bg-[#1b1b1d]"
               style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%)" }}
             />
             <div className="space-y-2">
               {paragraphs.map((paragraph) => (
-                <p key={`${message.id}-${paragraph}`} className="whitespace-pre-wrap break-words text-[14px] leading-5.5 sm:text-[15px]">
+                <p key={`${message.id}-${paragraph}`} className="whitespace-pre-wrap break-words text-sm leading-5">
                   {renderInline(paragraph)}
                 </p>
               ))}
@@ -59,9 +59,9 @@ const ChatMessage = ({ message }: Props) => {
           </div>
         </div>
       ) : (
-      <div
-        className={[
-          "min-w-0 max-w-[90%] px-4 py-3 sm:max-w-[80%]",
+        <div
+          className={[
+          "min-w-0 w-full px-4 py-3",
           isAssistant
             ? "text-gray-700 dark:text-gray-200"
             : "rounded-3xl bg-[#1b1b1d] text-white shadow-sm",
