@@ -36,17 +36,17 @@ const ChatMessage = ({ message }: Props) => {
     <article className={`min-w-0 overflow-x-hidden flex ${isAssistant ? "justify-start" : "justify-end"}`}>
       {!isAssistant ? (
         <div className="max-w-[92%] sm:max-w-[82%]">
-          <div className="mb-1 flex items-center justify-end gap-1.5 pr-1 text-[11px] font-medium text-gray-400">
+          <div className="mb-1 flex items-center justify-end gap-1.5 pr-1 text-[11px] font-medium text-gray-500 dark:text-gray-400">
             <svg className="h-3.5 w-3.5 shrink-0 opacity-90" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.8" />
               <path d="M12 7.5V12L15 13.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <span className="leading-none">{timestamp}</span>
           </div>
-          <div className="relative overflow-hidden rounded-[1.7rem] bg-[#1b1b1d] px-6 py-3 text-white shadow-sm">
+          <div className="relative overflow-hidden rounded-[1.7rem] bg-gray-900 px-6 py-3 text-white shadow-sm dark:bg-[#1b1b1d]">
             <span
               aria-hidden="true"
-              className="absolute right-0 top-2 h-4 w-4 translate-x-[35%] rounded-tr-[0.85rem] bg-[#1b1b1d]"
+              className="absolute right-0 top-2 h-4 w-4 translate-x-[35%] rounded-tr-[0.85rem] bg-gray-900 dark:bg-[#1b1b1d]"
               style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%)" }}
             />
             <div className="space-y-2">
@@ -63,7 +63,7 @@ const ChatMessage = ({ message }: Props) => {
         className={[
           "min-w-0 max-w-[90%] px-4 py-3 sm:max-w-[80%]",
           isAssistant
-            ? "text-gray-200"
+            ? "text-gray-700 dark:text-gray-200"
             : "rounded-3xl bg-[#1b1b1d] text-white shadow-sm",
         ].join(" ")}
       >

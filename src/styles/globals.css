@@ -8,6 +8,10 @@ body {
   margin: 0;
   font-family: inherit;
   overflow-x: hidden;
+  background: #fff;
+}
+
+html.dark body {
   background: #000;
 }
 

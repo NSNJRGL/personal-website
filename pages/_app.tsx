@@ -73,7 +73,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <AnimatedFooter />
           </div>
         ) : (
-          <div className={`${openSans.className} min-h-screen bg-black`}>
+          <div className={`${openSans.className} min-h-screen bg-white text-gray-900 dark:bg-black dark:text-gray-100`}>
             <Component {...pageProps} />
           </div>
         )}

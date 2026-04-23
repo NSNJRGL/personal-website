@@ -293,11 +293,11 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
   };
 
   return (
-    <div className="h-screen overflow-y-auto bg-black text-gray-100">
+    <div className="h-screen overflow-y-auto bg-white text-gray-900 dark:bg-black dark:text-gray-100">
       <div className="mx-auto flex min-h-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
-        <header className="sticky top-0 z-20 -mx-4 flex items-center justify-between gap-4 bg-black/80 px-4 pb-4 pt-5 text-xs text-gray-400 backdrop-blur sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <header className="sticky top-0 z-20 -mx-4 flex items-center justify-between gap-4 bg-white/80 px-4 pb-4 pt-5 text-xs text-gray-500 backdrop-blur dark:bg-black/80 dark:text-gray-400 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div className="flex items-center gap-3">
-            <span className="text-sm font-semibold tracking-[0.18em] text-gray-100">N/A</span>
+            <span className="text-sm font-semibold tracking-[0.18em] text-gray-900 dark:text-gray-100">N/A</span>
           </div>
           <div className="flex items-center gap-3">
             {quickLinks.map((link) => (
@@ -306,7 +306,7 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                className="hidden text-xs text-gray-300 transition hover:text-white sm:inline-flex"
+                className="hidden text-xs text-gray-600 transition hover:text-gray-900 dark:text-gray-300 dark:hover:text-white sm:inline-flex"
               >
                 {link.label}
               </a>
@@ -319,14 +319,14 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
           <div className="flex-1 space-y-7 pb-10 pt-8">
             {messages.length === 0 ? (
               <div className="pt-10 sm:pt-16">
-                <div className="mb-8 text-xs uppercase tracking-[0.28em] text-gray-500">Thought for a moment</div>
-                <h1 className="max-w-2xl text-2xl font-medium leading-tight text-white sm:text-4xl">
+                <div className="mb-8 text-xs uppercase tracking-[0.28em] text-gray-500 dark:text-gray-500">Thought for a moment</div>
+                <h1 className="max-w-2xl text-2xl font-medium leading-tight text-gray-900 dark:text-white sm:text-4xl">
                   Ask {name} through a chat-native portfolio.
                 </h1>
-                <p className="mt-6 max-w-2xl text-sm leading-7 text-gray-300 sm:text-base">
+                <p className="mt-6 max-w-2xl text-sm leading-7 text-gray-600 dark:text-gray-300 sm:text-base">
                   {shortBio}
                 </p>
-                <p className="mt-6 text-sm text-gray-500">
+                <p className="mt-6 text-sm text-gray-500 dark:text-gray-500">
                   Focused on {focus.join(", ")}. Ask about experience, projects, skills, interests, or how to get in touch.
                 </p>
               </div>
@@ -342,7 +342,7 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
             <div ref={bottomRef} />
           </div>
 
-          <div className="sticky bottom-0 mt-auto bg-gradient-to-t from-black via-black/95 to-transparent pb-6 pt-4 backdrop-blur">
+          <div className="sticky bottom-0 mt-auto bg-gradient-to-t from-white via-white/95 to-transparent pb-6 pt-4 backdrop-blur dark:from-black dark:via-black/95">
             <div className="mb-4">
               <SuggestedPrompts prompts={visiblePrompts} onSelect={handlePromptSelect} />
             </div>
@@ -353,7 +353,7 @@ const ChatShell = ({ name, headline, shortBio, focus, links }: Props) => {
               onSubmit={() => submitQuestion()}
               isLoading={isLoading}
             />
-            <p className="mt-3 text-center text-xs text-gray-500">
+            <p className="mt-3 text-center text-xs text-gray-500 dark:text-gray-500">
               Answers are grounded in resume, project, and profile data. AI may still make mistakes.
             </p>
           </div>
